@@ -11,22 +11,24 @@ void setup() {
   dedoAnular.attach(6);
   dedoMenique.attach(7);
   dedoMayor.attach(5);
+  abrirMano(); //Necesario para las rutinas
 }
 
 void abrirMano(){
   dedoGordo.write(180);
-  delay(1000);
+  delay(500);
   dedoIndice.write(180);
-  delay(1000);
-  dedoIMayor.write(180);
-  delay(1000);
+  delay(500);
+  dedoMayor.write(180);
+  delay(500);
   dedoAnular.write(180);
-  delay(1000);
+  delay(500);
   dedoMenique.write(180);
-  delay(1000);
+  delay(500);
 }
 
-void cerarMano(){
+void cerrarMano(){
+  abrirMano();
   dedoGordo.write(90);
   delay(500);
   dedoIndice.write(70);
@@ -40,18 +42,18 @@ void cerarMano(){
 }
 
 void contar(){
-  cerarMano();
-  delay(1000);
-  dedoIndice.write(70);
-  delay(1000);
-  dedoMayor.write(70);
-  delay(1000);
-  dedoAnular.write(70);
-  delay(1000);
-  dedoMenique.write(70);
-  delay(1000);
-  dedoGordo.write(90);
-  delay(1000);
+  cerrarMano();
+  delay(500);
+  dedoIndice.write(180);
+  delay(500);
+  dedoMayor.write(180);
+  delay(500);
+  dedoAnular.write(180);
+  delay(500);
+  dedoMenique.write(180);
+  delay(500);
+  dedoGordo.write(180);
+  delay(500);
 }
 
 void regresivo(){
@@ -83,7 +85,25 @@ void saludo(){
   }
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void ok(){ //Maximo de los dos dedos
+    //for (int i=0; i<=60; i++){
+    dedoGordo.write(180-55);
+    delay(500);
+    dedoIndice.write(180-43);
+    delay(500);
+  //}
+}
 
+void ok2(){
+  for (int i=0; i<=60; i++){
+    dedoAnular.write(180-i*5);
+    delay(500);
+  }
+}
+
+//Maximo dedo Menique: 140
+//Maximo dedo 
+
+void loop() {
+  abrirMano();
 }
