@@ -27,12 +27,54 @@ void abrirMano(){
   delay(500);
 }
 
-  void loop() {
-    dedoGordo.write(100);
+void cerrarMano(){
+    delay(50);
+    dedoIndice.write(70);
     delay(50);
     dedoMayor.write(70);
     delay(50);
     dedoAnular.write(70);
-    delay(5000);
-    abrirMano();
-  }
+    delay(50);
+    dedoMenique.write(80);
+    delay(50);
+    dedoGordo.write(90);
+}
+
+void contar(){
+  delay(1000);
+  uno();
+  delay(1000);
+  dos();
+  delay(1000);
+  tres();
+  delay(1000);
+  cuatro();
+  delay(1000);
+  cinco();
+  delay(3000);
+}
+
+void dos(){
+  dedoIndice.write(180);
+}
+
+void tres(){
+  dedoMayor.write(180);
+}
+
+void uno(){
+  cerrarMano();
+  dedoGordo.write(180);
+}
+
+void cuatro(){
+  dedoAnular.write(180);
+}
+
+void cinco(){
+  dedoMenique.write(180);
+}
+
+void loop() {
+  contar();
+}
