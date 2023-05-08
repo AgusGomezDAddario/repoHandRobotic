@@ -43,11 +43,40 @@ void cerrarMano(){
 }
 
 void i(){
-    cerrarMano();
-    dedoMenique.write(180);
-    delay(3000);
+  cerrarMano();
+  dedoMenique.write(180);
+  delay(3000);
 }
 
 void love(){
-    
+  cerrarMano();
+  dedoIndice.write(180);
+  delay(300);
+  dedoGordo.write(180);
+  delay(3000);
+}
+
+void you(){
+  cerrarMano();
+  dedoMenique.write(180);
+  delay(300);
+  dedoGordo.write(180);
+  delay(3000);
+}
+
+void iLoveYou(){
+  cerrarMano();
+  dedoGordo.write(100);
+  delay(300);
+  dedoMayor.write(70);
+  delay(300);
+  dedoAnular.write(70);
+}
+
+void loop(){
+  i();
+  love();
+  you();
+  iLoveYou();
+  delay(5000);
 }
