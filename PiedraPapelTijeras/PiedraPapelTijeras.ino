@@ -75,19 +75,23 @@ void loop(){
 
   int randomNumber = rand() % 3;
 
-    if(randomNumber = 1){
+    if(randomNumber == 0){
       piedra();
       delay(2000);
       abrirMano();
     }
-    if(randomNumber = 2){
+    if(randomNumber == 1){
       papel();
       delay(2000);
       abrirMano();
     }
-    if(randomNumber = 3){
+    if(randomNumber == 2){
       tijera();
       delay(2000);
       abrirMano();
     }
+
+   randomNumber = rand() % 3;
+}
+
 }
