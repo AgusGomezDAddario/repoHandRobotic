@@ -93,5 +93,3 @@ void loop(){
 
    randomNumber = rand() % 3;
 }
-
-}
