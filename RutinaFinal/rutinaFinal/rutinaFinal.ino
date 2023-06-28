@@ -6,14 +6,14 @@ Servo dedoMenique;
 Servo dedoMayor;
 
 //definicion de pines para boton y leds
-const int LED_ROJO =x;
-const int LED_AMARILLO =x;
-const int LED_VERDE =x;
-const int BOTON = x;
+//const int LED_ROJO =x;
+//const int LED_AMARILLO =x;
+//const int LED_VERDE =x;
+//const int BOTON = x;
 int estadoBoton = 0; //val se emplea para almacenar el estado del boton
 int estado = 0; // 0 LED apagado, mientras que 1 encendido
 int viejoValor = 0; // almacena el antiguo valor de val
-int voidActual = 1; //indico el numero de void que voy a llamar y que se modifica constantemente
+int voidActual = 0; //indico el numero de void que voy a llamar y que se modifica constantemente
 
 void setup() {
   dedoGordo.attach(3);
@@ -21,12 +21,13 @@ void setup() {
   dedoAnular.attach(6);
   dedoMenique.attach(7);
   dedoMayor.attach(5);
-  pinMode(LED_ROJO,OUTPUT); // establecer que el pin digital es una señal de salida
-  pinMode(LED_VERDE,OUTPUT); // establecer que el pin digital es una señal de salida
-  pinMode(LED_AMARILLO,OUTPUT); // establecer que el pin digital es una señal de salida
-  pinMode(BOTON,INPUT); // y BOTON como señal de entrada
+//  pinMode(LED_ROJO,OUTPUT); // establecer que el pin digital es una señal de salida
+//  pinMode(LED_VERDE,OUTPUT); // establecer que el pin digital es una señal de salida
+//  pinMode(LED_AMARILLO,OUTPUT); // establecer que el pin digital es una señal de salida
+//  pinMode(BOTON,INPUT); // y BOTON como señal de entrada
   randomSeed(analogRead(0));
   abrirMano(); //Necesario para las rutinas
+  Serial.begin(9600); //Necesario para imprimir valores
 }
 
 void abrirMano(){
@@ -58,12 +59,14 @@ void cerrarMano(){
 
 //METODO I LOVE YOU
 void i(){
+  Serial.println("I");
   cerrarMano();
   dedoMenique.write(180);
   delay(3000);
 }
 
 void love(){
+  Serial.println("love");
   cerrarMano();
   dedoIndice.write(180);
   delay(300);
@@ -72,6 +75,7 @@ void love(){
 }
 
 void you(){
+  Serial.println("you");
   cerrarMano();
   dedoMenique.write(180);
   delay(300);
@@ -80,6 +84,7 @@ void you(){
 }
 
 void iLoveYou(){
+  Serial.println("I love you");
   cerrarMano();
   dedoGordo.write(100);
   delay(300);
@@ -89,6 +94,8 @@ void iLoveYou(){
 }
 
 void ILoveYouCompleto(){
+  Serial.println("I love you completo");
+  cerrarMano();
   i();
   delay(500);
   love();
@@ -101,6 +108,7 @@ void ILoveYouCompleto(){
 
 //METODO CODAPLI
 void C(){
+  Serial.println("C");
   dedoGordo.write(180);
   dedoIndice.write(150);
   dedoMayor.write(160);
@@ -109,6 +117,7 @@ void C(){
 }
 
 void O(){
+  Serial.println("O");
     dedoGordo.write(125);
     delay(100);
     dedoIndice.write(137);
@@ -118,6 +127,7 @@ void O(){
 }
 
 void D(){
+  Serial.println("D");
     dedoGordo.write(125);
     dedoIndice.write(137);
     dedoMayor.write(137);
@@ -126,6 +136,7 @@ void D(){
 }
 
 void A(){
+  Serial.println("A");
   dedoIndice.write(120);
   dedoMayor.write(110);
   dedoAnular.write(110);
@@ -134,6 +145,7 @@ void A(){
 }
 
 void P(){
+  Serial.println("P");
   dedoGordo.write(180);
   dedoIndice.write(180);
   dedoMayor.write(150);
@@ -142,6 +154,7 @@ void P(){
 }
 
 void L(){
+  Serial.println("L");
   dedoIndice.write(180);
   dedoMayor.write(75);
   dedoAnular.write(75);
@@ -150,6 +163,7 @@ void L(){
 }
 
 void I(){
+  Serial.println("I");
   dedoGordo.write(170);
   dedoIndice.write(110);
   dedoMayor.write(75);
@@ -159,6 +173,7 @@ void I(){
 }
 
 void CODAPLI(){
+  Serial.println("Codapli");
   abrirMano();
   delay(5000);
   C();
@@ -181,6 +196,7 @@ void CODAPLI(){
 
 //METODO PIEDRA, PAPEL Y TIJERAS
 void piedra(){
+  Serial.println("Piedra");
     dedoGordo.write(180);
     delay(50);
     dedoIndice.write(70);
@@ -193,6 +209,7 @@ void piedra(){
 }
 
 void papel(){
+  Serial.println("Papel");
   dedoGordo.write(180);
   delay(50);
   dedoIndice.write(180);
@@ -206,6 +223,7 @@ void papel(){
 }
 
 void tijera(){
+  Serial.println("Tijera");
   dedoGordo.write(180);
     delay(20);
     dedoIndice.write(70);
@@ -223,7 +241,8 @@ void tijera(){
     dedoGordo.write(120);
 }
 
-void jugarPiedraPapelTijeras(numero int){
+void jugarPiedraPapelTijeras(){
+  int numero = random(2);
     if(numero == 0){
       piedra();
       delay(2000);
@@ -242,33 +261,40 @@ void jugarPiedraPapelTijeras(numero int){
 }
 
 void loop(){
-
     //Led verde: I love You
     //Led rojo: Codapli
     //Led Amarillo: piedraPapelTijeras
 
-if(digitalRead(BOTON) == LOW){
+/*if(digitalRead(BOTON) == LOW){
     voidActual++;
+}*/
+if(voidActual < 3){
+  voidActual = voidActual + 1;
+  } else{
+    voidActual = 1;
 }
-
    switch (voidActual){
     case 1:
-            digitalWrite(LED_AMARILLO, LOW);
-            digitalWrite(LED_VERDE, HIGH);
+            //digitalWrite(LED_AMARILLO, LOW);
+            //digitalWrite(LED_VERDE, HIGH);
+            Serial.println("I Love You");
             ILoveYouCompleto();
+            
         break;
 
         case 2:
-            digitalWrite(LED_VERDE, LOW);
-            digitalWrite(LED_ROJO, HIGH);
+            //digitalWrite(LED_VERDE, LOW);
+            //digitalWrite(LED_ROJO, HIGH);
+            Serial.println("Codapli");
             CODAPLI();
         break;
 
         case 3:
-            digitalWrite(LED_ROJO, LOW);
-            digitalWrite(LED_AMARILLO, HIGH);
-            int numeroAleatorio = random(2);
-            jugarPiedraPapelTijeras(numeroAleatorio);
+            //digitalWrite(LED_ROJO, LOW);
+            //digitalWrite(LED_AMARILLO, HIGH);
+            Serial.println("Piedra Papel Tijeras");
+            jugarPiedraPapelTijeras();
+
         break;
     
         default:
