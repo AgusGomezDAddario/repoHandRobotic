@@ -6,10 +6,9 @@ Servo dedoMenique;
 Servo dedoMayor;
 
 //definicion de pines para boton y leds
-//const int LED_ROJO =x;
-//const int LED_AMARILLO =x;
-//const int LED_VERDE =x;
-//const int BOTON = x;
+int LED_ROJO =13;
+int LED_AMARILLO =12;
+int LED_VERDE =11;
 int estadoBoton = 0; //val se emplea para almacenar el estado del boton
 int estado = 0; // 0 LED apagado, mientras que 1 encendido
 int viejoValor = 0; // almacena el antiguo valor de val
@@ -21,9 +20,9 @@ void setup() {
   dedoAnular.attach(6);
   dedoMenique.attach(7);
   dedoMayor.attach(5);
-//  pinMode(LED_ROJO,OUTPUT); // establecer que el pin digital es una señal de salida
-//  pinMode(LED_VERDE,OUTPUT); // establecer que el pin digital es una señal de salida
-//  pinMode(LED_AMARILLO,OUTPUT); // establecer que el pin digital es una señal de salida
+  pinMode(LED_ROJO,OUTPUT); // establecer que el pin digital es una señal de salida
+  pinMode(LED_VERDE,OUTPUT); // establecer que el pin digital es una señal de salida
+  pinMode(LED_AMARILLO,OUTPUT); // establecer que el pin digital es una señal de salida
 //  pinMode(BOTON,INPUT); // y BOTON como señal de entrada
   randomSeed(analogRead(0));
   abrirMano(); //Necesario para las rutinas
@@ -275,23 +274,23 @@ if(voidActual < 3){
 }
    switch (voidActual){
     case 1:
-            //digitalWrite(LED_AMARILLO, LOW);
-            //digitalWrite(LED_VERDE, HIGH);
+            digitalWrite(LED_AMARILLO, LOW);
+            digitalWrite(LED_VERDE, HIGH);
             Serial.println("I Love You");
             ILoveYouCompleto();
             
         break;
 
         case 2:
-            //digitalWrite(LED_VERDE, LOW);
-            //digitalWrite(LED_ROJO, HIGH);
+            digitalWrite(LED_VERDE, LOW);
+            digitalWrite(LED_ROJO, HIGH);
             Serial.println("Codapli");
             CODAPLI();
         break;
 
         case 3:
-            //digitalWrite(LED_ROJO, LOW);
-            //digitalWrite(LED_AMARILLO, HIGH);
+            digitalWrite(LED_ROJO, LOW);
+            digitalWrite(LED_AMARILLO, HIGH);
             Serial.println("Piedra Papel Tijeras");
             jugarPiedraPapelTijeras();
 
