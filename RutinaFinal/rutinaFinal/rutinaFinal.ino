@@ -85,11 +85,11 @@ void you(){
 void iLoveYou(){
   Serial.println("I love you");
   cerrarMano();
-  dedoGordo.write(100);
+  dedoGordo.write(120);
   delay(300);
-  dedoMayor.write(70);
+  dedoMayor.write(90);
   delay(300);
-  dedoAnular.write(70);
+  dedoAnular.write(90);
 }
 
 void ILoveYouCompleto(){
@@ -102,7 +102,7 @@ void ILoveYouCompleto(){
   you();
   delay(500);
   iLoveYou();
-  delay(5000);
+  delay(3000);
 }
 
 //METODO CODAPLI
@@ -196,15 +196,16 @@ void CODAPLI(){
 //METODO PIEDRA, PAPEL Y TIJERAS
 void piedra(){
   Serial.println("Piedra");
-    dedoGordo.write(180);
-    delay(50);
-    dedoIndice.write(70);
-    delay(50);
-    dedoMayor.write(70);
-    delay(50);
-    dedoAnular.write(70);
-    delay(50);
-    dedoMenique.write(80);
+  dedoGordo.write(90);
+  delay(50);
+  dedoIndice.write(70);
+  delay(50);
+  dedoMayor.write(70);
+  delay(50);
+  dedoAnular.write(70);
+  delay(50);
+  dedoMenique.write(70);
+  delay(50);
 }
 
 void papel(){
@@ -241,22 +242,45 @@ void tijera(){
 }
 
 void jugarPiedraPapelTijeras(){
-  int numero = random(2);
-    if(numero == 0){
       piedra();
       delay(2000);
       abrirMano();
-    }
-    if(numero == 1){
-      papel();
-      delay(2000);
-      abrirMano();
-    }
-    if(numero == 2){
+      cerrarMano();
+
       tijera();
       delay(2000);
       abrirMano();
-    }
+      cerrarMano();
+
+      tijera();
+      delay(2000);
+      abrirMano();
+      cerrarMano();
+
+      papel();
+      delay(2000);
+      abrirMano();
+      cerrarMano();
+
+      piedra();
+      delay(2000);
+      abrirMano();
+      cerrarMano();
+
+      papel();
+      delay(2000);
+      abrirMano();
+      cerrarMano();
+
+      tijera();
+      delay(2000);
+      abrirMano();
+      cerrarMano();
+
+      piedra();
+      delay(2000);
+      abrirMano();
+      cerrarMano();
 }
 
 void loop(){
@@ -267,7 +291,7 @@ void loop(){
 /*if(digitalRead(BOTON) == LOW){
     voidActual++;
 }*/
-if(voidActual < 3){
+if(voidActual < 4){
   voidActual = voidActual + 1;
   } else{
     voidActual = 1;
@@ -293,8 +317,23 @@ if(voidActual < 3){
             digitalWrite(LED_AMARILLO, HIGH);
             Serial.println("Piedra Papel Tijeras");
             jugarPiedraPapelTijeras();
-
         break;
+
+        case 4:
+            abrirMano();
+            digitalWrite(LED_AMARILLO, HIGH);
+            delay(1000);
+            digitalWrite(LED_AMARILLO, LOW);
+            delay(1000);
+            digitalWrite(LED_ROJO, HIGH);
+            delay(1000);
+            digitalWrite(LED_ROJO, LOW); 
+            delay(1000);
+            digitalWrite(LED_VERDE, HIGH);
+            delay(1000);
+            digitalWrite(LED_VERDE, LOW);
+            delay(1000);
+          break;
     
         default:
             break;
