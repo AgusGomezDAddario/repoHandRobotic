@@ -13,6 +13,7 @@ int estadoBoton = 0; //val se emplea para almacenar el estado del boton
 int estado = 0; // 0 LED apagado, mientras que 1 encendido
 int viejoValor = 0; // almacena el antiguo valor de val
 int voidActual = 0; //indico el numero de void que voy a llamar y que se modifica constantemente
+const int BUFFER_PIN=8; //indico en qué pin se conecta el buffer
 
 void setup() {
   dedoGordo.attach(3);
@@ -27,6 +28,8 @@ void setup() {
   randomSeed(analogRead(0));
   abrirMano(); //Necesario para las rutinas
   Serial.begin(9600); //Necesario para imprimir valores
+  pinMode(BUFFER_PIN, OUTPUT);
+  analogWrite(BUFFER_PIN, 8);	
 }
 
 void abrirMano(){
@@ -242,45 +245,75 @@ void tijera(){
 }
 
 void jugarPiedraPapelTijeras(){
+      cuentaRegresiva();
       piedra();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       tijera();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       tijera();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       papel();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       piedra();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       papel();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       tijera();
       delay(2000);
       abrirMano();
       cerrarMano();
 
+      cuentaRegresiva();
       piedra();
       delay(2000);
       abrirMano();
       cerrarMano();
+}
+
+void cuentaRegresiva() {
+  tone(BUFFER_PIN, 500, 1000);  // Tono para el número "3"
+  delay(300);
+  noTone(BUFFER_PIN);
+  delay(200);
+
+  tone(BUFFER_PIN, 400, 1000);  // Tono para el número "2"
+  delay(300);
+  noTone(BUFFER_PIN);
+  delay(200);
+
+  tone(BUFFER_PIN, 300, 1000);  // Tono para el número "1"
+  delay(300);
+  noTone(BUFFER_PIN);
+  delay(200);
+
+  tone(BUFFER_PIN, 800, 2000);  // Tono para "ya!!"
+  delay(700);
+  noTone(BUFFER_PIN);
+  delay(1000);  // Espera un segundo después de "ya!!"
 }
 
 void loop(){
