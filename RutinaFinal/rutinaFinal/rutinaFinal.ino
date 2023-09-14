@@ -200,29 +200,29 @@ void CODAPLI(){
 void piedra(){
   Serial.println("Piedra");
   dedoGordo.write(90);
-  delay(50);
+  delay(20);
   dedoIndice.write(70);
-  delay(50);
+  delay(20);
   dedoMayor.write(70);
-  delay(50);
+  delay(20);
   dedoAnular.write(70);
-  delay(50);
+  delay(20);
   dedoMenique.write(70);
-  delay(50);
+  delay(20);
 }
 
 void papel(){
   Serial.println("Papel");
   dedoGordo.write(180);
-  delay(50);
+  delay(20);
   dedoIndice.write(180);
-  delay(50);
+  delay(20);
   dedoMayor.write(180);
-  delay(50);
+  delay(20);
   dedoAnular.write(180);
-  delay(50);
+  delay(20);
   dedoMenique.write(180);
-  delay(50);
+  delay(20);
 }
 
 void tijera(){
