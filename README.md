@@ -16,7 +16,7 @@
       seleccionaron tres para su versión final que está expuesta en la Universidad Tecnológica de la Plata.
 
   # ✅ Documentación oficial del proyecto
-      - Ingrese aquí para acceder a la documentación oficial
+      [Ingrese aquí] (https://github.com/AgusGomezDAddario/repoHandRobotic.git/Informe Mano 1.docx) para acceder a la documentación oficial
 
       
 
