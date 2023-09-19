@@ -16,7 +16,7 @@
       seleccionaron tres para su versión final que está expuesta en la Universidad Tecnológica de la Plata.
 
   # ✅ Documentación oficial del proyecto
-      [Ingrese aquí (https://docs.google.com/document/d/1RrCE_cDcjWX9hkSgaIHFktNsBmtqBAUAQaL6gG8r5do/edit?usp=sharing)] para acceder a la documentación oficial
+      [Ingrese aquí](https://docs.google.com/document/d/1RrCE_cDcjWX9hkSgaIHFktNsBmtqBAUAQaL6gG8r5do/edit?usp=sharing) para acceder a la documentación oficial
 
       
 
